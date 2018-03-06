@@ -13,7 +13,7 @@ def buildMenu(parent):
         ("Help", ( ("Help", evHelp),
                    ("About", evAbout)))
         )
-        
+
     menubar = tk.Menu(parent)
     for menu in menus:
         m = tk.Menu(parent)
@@ -35,17 +35,17 @@ evHelp = dummy
 evAbout = dummy
 
 gameover = False
-def evClick(row,col): 
+def evClick(row,col):
 	global gameover
 	if gameover:
 		mb.showerror("Game over", "Game over!")
 		return
-		
+
 	game = cells2game()
 	index = (3*row) + col
 	result = oxo_logic.userMove(game, index)
 	game2cells(game)
-	
+
 	if not result:
 		result = oxo_logic.computerMove(game)
 		game2cells(game)
@@ -56,31 +56,31 @@ def evClick(row,col):
 		if result == "X" or result == "O":
 		    mb.showinfo("Result",  "The winner is: {}".format(result))
 		    gameover = True
-		
+
 def game2cells(game):
 	table = board.pack_slaves()[0]
 	for row in range(3):
 		for col in range(3):
 			table.grid_slaves(row=row,column=col)[0]['text'] = game[3*row+col]
 
-	
+
 def cells2game():
     values = []
     table = board.pack_slaves()[0]
-	for row in range(3):
+    for row in range(3):
         for col in range(3):
             values.append(table.grid_slaves(row=row, column=col)[0]['text'])
     return values
-	
+
 def buildBoard(parent):
 	outer = tk.Frame(parent, border=2, relief="sunken")
 	inner = tk.Frame(outer)
 	inner.pack()
-	
+
 	for row in range(3):
 		for col in range(3):
-			cell = tk.Button(inner, text=" ",  width="5", height="2", 
-			                        command=lambda r=row, c=col : evClick(r,c) )
+			cell = tk.Button(inner, text=" ",  width="5", height="2",
+			                 command=lambda r=row, c=col : evClick(r,c) )
 			cell.grid(row=row, column=col)
 	return outer
 
@@ -89,7 +89,7 @@ top["menu"] = mbar
 
 board = buildBoard(top)
 board.pack()
-status = tk.Label(top, text="testing", border=0, 
+status = tk.Label(top, text="testing", border=0,
                   background="lightgrey", foreground="red")
 status.pack(anchor="s", fill="x", expand=True)
 
