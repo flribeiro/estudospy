@@ -4,3 +4,5 @@ Lib/
 man/
 Scripts/
 tcl/
+bin/
+lib64
