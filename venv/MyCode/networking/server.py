@@ -10,6 +10,7 @@ class TCPHandler(socketserver.BaseRequestHandler):
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 8080
+    print("Server listening on port {}.".format(PORT))
     # server = SocketServer.TCPServer((HOST, PORT), TCPHandler)
     server = socketserver.TCPServer((HOST, PORT), TCPHandler)
     server.serve_forever()
