@@ -16,14 +16,12 @@ class Apartment(Property):
     def prompt_init():
         parent_init = Property.prompt_init()
         laundry = ''
-        while laundry.lower() not in \
-                Apartment.valid_laundries:
+        while laundry.lower() not in Apartment.valid_laundries:
             laundry = input("What laundry facilities does "
                     "the property have? ({})".format(
                     ", ".join(Apartment.valid_laundries))
         balcony = ''
-        while balcony.lower() not in \
-                Apartment.valid_balconies:
+        while balcony.lower() not in Apartment.valid_balconies:
             balcony = input(
                 "Does the property have a balcony? "
                 "({})".format(
