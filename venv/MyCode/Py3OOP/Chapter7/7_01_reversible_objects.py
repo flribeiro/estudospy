@@ -2,7 +2,7 @@ normal_list=[1,2,3,4,5]
 
 class CustomSequence():
     def __len__(self):
-        return 5
+        return 10
 
     def __getitem__(self, index):
         return "x{0}".format(index)
